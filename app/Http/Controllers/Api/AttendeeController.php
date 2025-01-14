@@ -24,6 +24,7 @@ class AttendeeController extends Controller implements HasMiddleware
     {
         return [
             new Middleware(middleware: 'auth:sanctum', except: ['index', 'show']),
+            new Middleware(middleware: 'throttle:60,1', only: ['store', 'destroy']),
         ];
     }
 
